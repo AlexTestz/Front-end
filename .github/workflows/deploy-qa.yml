@@ -1,0 +1,32 @@
+name: Deploy Frontend to EC2
+
+on:
+  push:
+    branches:
+      - QA
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Setup SSH key
+        run: |
+          echo "$EC2_SSH_KEY" > key.pem
+          chmod 400 key.pem
+        env:
+          EC2_SSH_KEY: ${{ secrets.EC2_SSH_KEY }}
+
+      - name: Connect and run Docker on EC2
+        run: |
+          ssh -o StrictHostKeyChecking=no -i key.pem ec2-user@54.196.70.190 << 'EOF'
+            # Pull the latest version of the frontend image
+            docker pull alexmpz/my-frontend:latest
+            
+            # Stop and remove any existing container named 'frontend-app'
+            docker stop frontend-app || true
+            docker rm frontend-app || true
+
+            # Run the new container with restart policy
+            docker run -d -p 80:80 --name frontend-app 
+            EOF
