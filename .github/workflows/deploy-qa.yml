@@ -19,7 +19,7 @@ jobs:
 
       - name: Connect and run Docker on EC2
         run: |
-          ssh -o StrictHostKeyChecking=no -i key.pem ec2-user@54.196.70.190 << 'EOF'
+          ssh -o StrictHostKeyChecking=no -i key.pem ec2-user@3.233.35.150 << 'EOF'
             # Pull the latest version of the frontend image
             docker pull alexmpz/my-frontend:latest
             
