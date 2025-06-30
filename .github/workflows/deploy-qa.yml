@@ -1,4 +1,4 @@
-name: Deploy Frontend to EC2 # Workflow for QA Branch
+name: Deploy Frontend to EC2
 
 on:
   push:
@@ -20,7 +20,7 @@ jobs:
       - name: Connect and run Docker on EC2
         run: |
           ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i key.pem ubuntu@3.233.35.150 << 'EOF'
-            cd /home/ubuntu/tu-frontend
+            cd /home/ubuntu/Front-end
             git pull origin QA
             docker build -t frontend-app .
             docker stop frontend-app || true
