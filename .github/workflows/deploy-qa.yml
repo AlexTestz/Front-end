@@ -17,15 +17,13 @@ jobs:
         env:
           EC2_SSH_KEY: ${{ secrets.EC2_SSH_KEY }}
 
-      - name: Connect and deploy on EC2
-  run: |
-    ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i key.pem ubuntu@3.233.35.150 << 'EOF'
-      cd /home/ubuntu/tu-frontend
-      git pull origin QA
-      docker build -t frontend-app .
-      docker stop frontend-app || true
-      docker rm frontend-app || true
-      docker run -d -p 80:80 --name frontend-app --restart unless-stopped frontend-app
-    EOF
-
-
+      - name: Connect and run Docker on EC2
+        run: |
+          ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i key.pem ubuntu@3.233.35.150 << 'EOF'
+            cd /home/ubuntu/tu-frontend
+            git pull origin QA
+            docker build -t frontend-app .
+            docker stop frontend-app || true
+            docker rm frontend-app || true
+            docker run -d -p 80:80 --name frontend-app --restart unless-stopped frontend-app
+          EOF
