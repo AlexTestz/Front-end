@@ -27,7 +27,7 @@ export default function LoginPage() {
       navigate("/dashboard");
     } catch (err: any) {
       const errorData = err.response?.data;
-      let detail: string | string[] = "❌ Error inesperado del servidor.";
+      let detail: string | string[] = "❌ Error inesperado del servidor..";
 
       if (Array.isArray(errorData?.detail)) {
         // Errores múltiples (por ejemplo, validación FastAPI)
