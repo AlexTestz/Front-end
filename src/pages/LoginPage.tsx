@@ -16,7 +16,7 @@ export default function LoginPage() {
     setErrorMsg(""); // Reset error msg
 
     try {
-      const res = await axios.post("http://3.233.35.150:8000/api/users/login", {
+      const res = await axios.post("http://3.214.168.136:8000/api/users/login", {
         username_or_email: email,
         password,
       });
