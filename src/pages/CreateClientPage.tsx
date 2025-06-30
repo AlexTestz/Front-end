@@ -30,7 +30,7 @@ export default function CreateClientPage() {
     console.log("📤 Enviando datos del cliente:", payload);
 
     try {
-      const res = await axios.post("http://localhost:8000/api/clients", payload, {
+      const res = await axios.post("http://3.214.168.136:8000/api/clients", payload, {
         validateStatus: () => true,
       });
 

@@ -26,7 +26,7 @@ export default function RegisterPage() {
     try {
       console.log("📤 Enviando datos:", payload);
 
-      const res = await axios.post("http://localhost:3006/api/users/register", payload);
+      const res = await axios.post("http://3.214.168.136:8000/api/users/register", payload);
 
       if (res.status === 200 || res.status === 201) {
         setSuccessMsg("✅ Registro exitoso, redirigiendo al login...");
