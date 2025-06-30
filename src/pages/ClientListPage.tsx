@@ -10,7 +10,7 @@ export default function ClientsListPage() {
 
   const fetchClients = async () => {
     try {
-      const res = await axios.get("http://3.214.168.136:8000/api/clients");
+      const res = await axios.get("http://localhost:8000/api/clients");
       setClients(res.data.clients);
     } catch (err) {
       console.error("❌ Error al obtener clientes:", err);
@@ -22,7 +22,7 @@ export default function ClientsListPage() {
     if (!confirm("¿Estás seguro de eliminar este cliente?")) return;
 
     try {
-      await axios.delete(`http://3.214.168.136:8000/api/clients/${id}`);
+      await axios.delete(`http://localhost:8000/api/clients/${id}`);
       setClients((prev) => prev.filter((c: any) => c.id !== id));
     } catch (err) {
       console.error("❌ Error al eliminar:", err);

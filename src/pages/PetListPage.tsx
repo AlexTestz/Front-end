@@ -10,7 +10,7 @@ export default function PetListPage() {
 
   const fetchPets = async () => {
     try {
-      const res = await axios.get("http://3.214.168.136:8000/api/pets");
+      const res = await axios.get("http://localhost:8000/api/pets");
       setPets(res.data);
     } catch (err) {
       console.error("❌ Error al obtener mascotas:", err);
@@ -22,7 +22,7 @@ export default function PetListPage() {
     if (!confirm("¿Estás seguro de eliminar esta mascota?")) return;
 
     try {
-      await axios.delete(`http://3.214.168.136:8000/api/pets/${id}`);
+      await axios.delete(`http://localhost:8000/api/pets/${id}`);
       setPets((prev) => prev.filter((p: any) => p.id !== id));
     } catch (err) {
       console.error("❌ Error al eliminar:", err);

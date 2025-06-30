@@ -20,7 +20,7 @@ export default function EditClientPage() {
   useEffect(() => {
     const fetchClient = async () => {
       try {
-        const res = await axios.get(`http://3.214.168.136:8000/api/clients/${id}`);
+        const res = await axios.get(`http://localhost:8000/api/clients/${id}`);
         setForm(res.data.client);
       } catch (err) {
         setErrorMsg("❌ Error al cargar datos del cliente.");
@@ -42,7 +42,7 @@ export default function EditClientPage() {
     setSuccessMsg("");
 
     try {
-      await axios.put(`http://3.214.168.136:8000/api/clients/${id}`, form);
+      await axios.put(`http://localhost:8000/api/clients/${id}`, form);
       setSuccessMsg("✅ Cliente actualizado correctamente.");
       setTimeout(() => navigate("/clients"), 1500);
     } catch (err) {
