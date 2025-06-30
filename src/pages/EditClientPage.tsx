@@ -16,11 +16,12 @@ export default function EditClientPage() {
 
   const [errorMsg, setErrorMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
-
+// Cargar datos del cliente al iniciar
+  // Asegúrate de que el ID es válido antes de hacer la solicitud
   useEffect(() => {
     const fetchClient = async () => {
       try {
-        const res = await axios.get(`http://localhost:8000/api/clients/${id}`);
+        const res = await axios.get(`http://3.214.168.136:8000/api/clients/${id}`);
         setForm(res.data.client);
       } catch (err) {
         setErrorMsg("❌ Error al cargar datos del cliente.");
@@ -40,9 +41,10 @@ export default function EditClientPage() {
     e.preventDefault();
     setErrorMsg("");
     setSuccessMsg("");
-
+// Validar campos requeridos
+//actualizar cliente
     try {
-      await axios.put(`http://localhost:8000/api/clients/${id}`, form);
+      await axios.put(`http://3.214.168.136:8000/api/clients/${id}`, form);
       setSuccessMsg("✅ Cliente actualizado correctamente.");
       setTimeout(() => navigate("/clients"), 1500);
     } catch (err) {

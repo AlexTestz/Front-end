@@ -37,7 +37,7 @@ export default function EditPetPage() {
   useEffect(() => {
     const fetchPet = async () => {
       try {
-        const res = await axios.get(`http://localhost:8000/api/pets/${id}`);
+        const res = await axios.get(`http://3.214.168.136:8000/api/pets/${id}`);
         const { name, breed, age, admission_date, notes } = res.data;
         setForm({
           name,
@@ -71,9 +71,9 @@ export default function EditPetPage() {
     e.preventDefault();
     setErrorMsg("");
     setSuccessMsg("");
-
+// actualizar mascota
     try {
-      await axios.put(`http://localhost:8000/api/pets/${id}`, {
+      await axios.put(`http://3.214.168.136:8000/api/pets/${id}`, {
         name: form.name,
         species: "Perro", // 🎯 especie fija
         breed: form.breed === "Otro" ? customBreed : form.breed,
