@@ -30,7 +30,6 @@ export default function LoginPage() {
       let detail: string | string[] = "❌ Error inesperado del servidor..";
 
       if (Array.isArray(errorData?.detail)) {
-        // Errores múltiples (por ejemplo, validación FastAPI)
         detail = errorData.detail.map((e: any) => e.msg);
       } else if (typeof errorData?.detail === "string") {
         detail = errorData.detail;
@@ -46,7 +45,7 @@ export default function LoginPage() {
     <div className="flex min-h-screen items-center justify-center bg-gray-100">
       <form
         onSubmit={handleSubmit}
-        className="bg-white p-6 rounded-xl shadow-md w-full max-w-sm"
+        className="bg-white p-6 rounded-xl shadow-md w-full max-w-sm text-center"
       >
         <h2 className="text-2xl font-bold mb-4">Iniciar sesión</h2>
 
@@ -65,7 +64,7 @@ export default function LoginPage() {
           <label className="block mb-1 text-sm font-medium">Email</label>
           <input
             type="email"
-            className="w-full px-3 py-2 border rounded-md"
+            className="w-64 px-3 py-1.5 border rounded-md"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
@@ -76,7 +75,7 @@ export default function LoginPage() {
           <label className="block mb-1 text-sm font-medium">Contraseña</label>
           <input
             type="password"
-            className="w-full px-3 py-2 border rounded-md"
+            className="w-64 px-3 py-1.5 border rounded-md"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
@@ -85,7 +84,7 @@ export default function LoginPage() {
 
         <button
           type="submit"
-          className="bg-indigo-600 text-white w-full py-2 rounded-md hover:bg-indigo-700 transition"
+          className="bg-indigo-600 text-white w-64 py-2 rounded-md hover:bg-indigo-700 transition"
         >
           Entrar
         </button>
