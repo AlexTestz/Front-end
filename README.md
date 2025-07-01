@@ -1,54 +1,60 @@
-# React + TypeScript + Vite
+# Pet Host Front-end
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este proyecto es el **front-end** de Pet Host, desarrollado en **React + TypeScript** usando **Vite**.
 
-Currently, two official plugins are available:
+## 🚀 Instalación
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. Clona el repositorio:
+   ```bash
+   git clone https://github.com/tu-usuario/Pet_Host.git
+   cd Pet_Host/Front-end
+   ```
 
-## Expanding the ESLint configuration
+2. Instala las dependencias:
+   ```bash
+   npm install
+   ```
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+3. Crea un archivo `.env` si necesitas variables de entorno (opcional).
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## 🖥️ Uso
+
+Inicia el servidor de desarrollo:
+```bash
+npm run dev
+```
+Abre tu navegador en [http://localhost:5173](http://localhost:5173) (o la URL que indique la terminal).
+
+## 🌐 Conexión con el API Gateway
+
+El front-end está configurado para consumir el API Gateway desplegado en AWS EC2:
+
+```
+http://3.214.168.136:8000
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Las rutas principales son:
+- **Usuarios:** `/api/users/register`, `/api/users/login`, `/api/users/change-password`
+- **Clientes:** `/api/clients/`
+- **Mascotas:** `/api/pets/`
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Asegúrate de que el backend esté corriendo y permita conexiones desde el front-end.
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+## 📦 Estructura del proyecto
+
 ```
+src/
+  components/      # Componentes reutilizables
+  context/         # Contextos de React (ej: Auth)
+  pages/           # Páginas principales (Login, Registro, Dashboard, etc.)
+  utils/           # Utilidades y helpers
+  App.tsx          # Componente principal
+  main.tsx         # Punto de entrada
+```
+
+## 📝 Notas
+
+- Si cambias la IP o el puerto del API Gateway, actualiza la constante `API_BASE_URL` en `src/utils/api.ts` (si la tienes).
+- El proyecto utiliza rutas protegidas, autenticación JWT y manejo de roles.
+- Si tienes problemas de CORS, revisa la configuración del backend.
+
