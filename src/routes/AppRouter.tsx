@@ -10,6 +10,9 @@ import PetListPage from "../pages/PetListPage";
 import EditPetPage from "../pages/EditPetPage";
 import EditClientPage from "../pages/EditClientPage";
 import ChangePasswordPage from "../pages/ChangePasswordPage";
+import CreateReservationPage from "../pages/CreateReservationPage"; // Asegúrate de importar el nuevo componente
+
+
 
 
 
@@ -26,6 +29,9 @@ export default function AppRouter() {
         <Route path="/edit-pet/:id" element={<EditPetPage />} />
         <Route path="/edit-client/:id" element={<EditClientPage />} />
         <Route path="/change-password" element={<ChangePasswordPage />} />
+        <Route path="/create-reservation" element={<CreateReservationPage />} />
+        
+        {/* Ruta protegida para el dashboard */}
 
 
         <Route

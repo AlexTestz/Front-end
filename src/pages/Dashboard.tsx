@@ -62,7 +62,17 @@ export default function Dashboard() {
         >
           Ver mascotas
         </button>
+
         <button
+          onClick={() => navigate("/create-reservation")}
+          className="bg-orange-600 text-white w-full py-2 rounded hover:bg-orange-700 transition"
+
+        >
+            Crear Reserva
+          </button>
+
+        <button
+
           onClick={logout}
           className="bg-red-500 text-white w-full py-2 rounded hover:bg-red-600 transition"
         >
