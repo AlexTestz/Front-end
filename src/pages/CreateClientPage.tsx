@@ -57,43 +57,43 @@ export default function CreateClientPage() {
   return (
     <div className="client-form-container">
       <form onSubmit={handleSubmit} className="client-form">
-        <h2>Datos del Cliente</h2>
+        <h2>Customer Data</h2>
 
         {errorMsg && <p className="error-message">{errorMsg}</p>}
         {successMsg && <p className="success-message">{successMsg}</p>}
 
         <div className="form-group">
-          <label>Nombre</label>
+          <label>Name</label>
           <input type="text" value={name} onChange={(e) => setName(e.target.value)} required />
         </div>
 
         <div className="form-group">
-          <label>Apellido</label>
+          <label>Last name</label>
           <input type="text" value={lastname} onChange={(e) => setLastname(e.target.value)} required />
         </div>
 
         <div className="form-group">
-          <label>Correo electrónico</label>
+          <label>Email</label>
           <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
         </div>
 
         <div className="form-group">
-          <label>Dirección</label>
+          <label>Address</label>
           <input type="text" value={address} onChange={(e) => setAddress(e.target.value)} required />
         </div>
 
         <div className="form-group">
-          <label>Teléfono</label>
+          <label>Phone</label>
           <input type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} required />
         </div>
-        <button type="submit">Registrar Cliente</button>
+        <button type="submit">Register Customer</button>
         <div className="regresar">
   <button 
     type="button"
     onClick={() => navigate("/dashboard")}
     className="bg-gray-500 text-white w-full py-2 rounded mt-3 hover:bg-gray-600 transition"
   >
-    Regresar
+    Return
   </button>
 </div>
 
