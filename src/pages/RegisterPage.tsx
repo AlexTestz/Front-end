@@ -32,7 +32,7 @@ export default function RegisterPage() {
       if (res.status === 200 || res.status === 201) {
         setSuccessMsg("✅ Registro exitoso, redirigiendo al login...");
         setTimeout(() => {
-          navigate("/login"); // Redirige a la página de creación de cliente
+          navigate("/"); // Redirige a la página de creación de cliente
         }, 2000);
       }
 
