@@ -27,7 +27,7 @@ export default function CreatePetPage() {
     const fetchClients = async () => {
       try {
         //get clients from the API
-        const res = await axios.get("http://3.214.168.136:8000/api/clients"); 
+        const res = await axios.get("http://3.211.68.117:8000/api/clients"); 
         setClients(res.data.clients);
       } catch (err) {
         console.error("❌ Error al cargar clientes:", err);
@@ -55,7 +55,7 @@ export default function CreatePetPage() {
     console.log("📤 Registrando mascota:", payload);
 //register pet
     try {
-      const res = await axios.post("http://3.214.168.136:8000/api/pets/", payload, {
+      const res = await axios.post("http://3.211.68.117:8000/api/pets/", payload, {
         validateStatus: () => true,
       });
 
