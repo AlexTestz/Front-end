@@ -21,7 +21,7 @@ export default function RegisterPage() {
       username,
       email,
       password,
-      role: "usuario", // Assuming the role is always 'user' for registration
+      role: "admin", // Assuming the role is always 'user' for registration
     };
 
     try {
@@ -30,8 +30,10 @@ export default function RegisterPage() {
       const res = await axios.post("http://3.211.68.117:8000/api/users/register", payload);
 
       if (res.status === 200 || res.status === 201) {
-        setSuccessMsg("✅ Registration successful, redirecting to login...");
-
+        setSuccessMsg("✅ Registro exitoso, redirigiendo al login...");
+        setTimeout(() => {
+          navigate("/login"); // Redirige a la página de creación de cliente
+        }, 2000);
       }
 
     } catch (err: any) {
