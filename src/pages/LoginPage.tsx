@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState } from "react"; 
 import axios from "axios";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../context/AuthContext"; // Ajusta la ruta para que apunte a /context/AuthContext
 import { useNavigate } from "react-router-dom";
+import '../components/LoginPage.css'; // Asegúrate de que el CSS esté en el mismo directorio
 
 export default function LoginPage() {
   const { login } = useAuth();
@@ -42,40 +43,42 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-100">
+
+    <div className="login-container">
       <form
         onSubmit={handleSubmit}
-        className="bg-white p-6 rounded-xl shadow-md w-full max-w-sm"
+        className="login-form"
       >
-        <h2 className="text-2xl font-bold mb-4">Iniciar sesión</h2>
+        <h2 className="login-title tracking-tight text-2xl font-bold text-center">Iniciar sesión</h2>
+
 
         {/* Mostrar mensajes de error */}
         {Array.isArray(errorMsg) ? (
-          <ul className="text-red-600 text-sm mb-3 list-disc ml-5">
+          <ul className="error-messages">
             {errorMsg.map((msg, i) => (
               <li key={i}>{msg}</li>
             ))}
           </ul>
         ) : (
-          errorMsg && <p className="text-red-600 text-sm mb-3">{errorMsg}</p>
+          errorMsg && <p className="error-message">{errorMsg}</p>
         )}
 
-        <div className="mb-4">
-          <label className="block mb-1 text-sm font-medium">Email</label>
+        <div className="input-group">
+          <label className="input-label">Email</label>
           <input
             type="email"
-            className="w-full px-3 py-2 border rounded-md"
+            className="input-field"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
         </div>
 
-        <div className="mb-4">
-          <label className="block mb-1 text-sm font-medium">Contraseña</label>
+        <div className="input-group">
+          <label className="input-label">Contraseña</label>
           <input
             type="password"
-            className="w-full px-3 py-2 border rounded-md"
+            className="input-field"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
@@ -84,18 +87,20 @@ export default function LoginPage() {
 
         <button
           type="submit"
-          className="bg-indigo-600 text-white w-full py-2 rounded-md hover:bg-indigo-700 transition"
+          className="submit-btn"
         >
           Entrar
         </button>
 
-        <p className="mt-3 text-sm text-center">
+        <p className="signup-link">
           ¿No tienes cuenta?{" "}
-          <a href="/register" className="text-blue-600 hover:underline">
+          <a href="/register" className="signup-link-text">
             Regístrate aquí
           </a>
         </p>
       </form>
     </div>
+
   );
+  
 }
