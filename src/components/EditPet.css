@@ -1,0 +1,124 @@
+.edit-pet-container {
+  padding: 40px 20px;
+  min-height: 100vh;
+  background-color: transparent;
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Title */
+.edit-pet-title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #000;
+  text-align: center;
+}
+
+/* Message */
+.edit-pet-error {
+  color: #ff0000;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.edit-pet-success {
+  color: #01722a;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+/* Forms */
+.edit-pet-form {
+  background-color: transparent;
+  padding: 3rem;
+  border-radius: 30px;
+  box-shadow: 0 4px 50px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 500px;
+  box-sizing: border-box;
+}
+
+.edit-pet-form label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.95rem;
+  color: #000;
+}
+
+.edit-pet-form input,
+.edit-pet-form select,
+.edit-pet-form textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 6px;
+  border: none;
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 16px;
+  background-color: #f9f9f9;
+  box-sizing: border-box;
+}
+
+/* Buttons */
+.edit-pet-button,
+.regresar-button {
+  background-color: #9b7610b7;
+  color: #000;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.edit-pet-button:hover,
+.regresar-button:hover {
+  background-color: #d8ae25;
+}
+
+/* ---------------- Responsive ---------------- */
+
+@media (max-width: 768px) {
+  .edit-pet-title {
+    font-size: 2rem;
+  }
+
+  .edit-pet-form {
+    padding: 2rem;
+    border-radius: 20px;
+  }
+
+  .edit-pet-form input,
+  .edit-pet-form select,
+  .edit-pet-form textarea {
+    font-size: 0.95rem;
+  }
+
+  .edit-pet-button,
+  .regresar-button {
+    font-size: 0.95rem;
+    padding: 10px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .edit-pet-title {
+    font-size: 1.5rem;
+  }
+
+  .edit-pet-form {
+    padding: 1.5rem;
+  }
+
+  .edit-pet-button,
+  .regresar-button {
+    font-size: 0.9rem;
+  }
+}

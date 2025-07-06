@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import ".components/EditPetPage.css"; // Assuming you have a CSS file for styles
 
 export default function EditPetPage() {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  // ---------- catálogo fijo de razas ----------
+  // ---------- fixed breed catalog ----------
   const dogBreeds = [
     "Labrador Retriever",
     "Pastor Alemán",
@@ -21,7 +22,7 @@ export default function EditPetPage() {
     "Otro",
   ];
 
-  // ---------- estado ----------
+  // ---------- status ----------
   const [form, setForm] = useState({
     name: "",
     breed: "",
@@ -33,7 +34,7 @@ export default function EditPetPage() {
   const [errorMsg, setErrorMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
 
-  // ---------- cargar mascota ----------
+  // ---------- load pet ----------
   useEffect(() => {
     const fetchPet = async () => {
       try {
@@ -49,7 +50,7 @@ export default function EditPetPage() {
         if (!dogBreeds.includes(breed)) setCustomBreed(breed);
       } catch (err) {
         console.error(err);
-        setErrorMsg("❌ Error al cargar datos de la mascota.");
+        setErrorMsg("❌ Error loading pet data.");
       }
     };
     fetchPet();
@@ -71,54 +72,52 @@ export default function EditPetPage() {
     e.preventDefault();
     setErrorMsg("");
     setSuccessMsg("");
-// actualizar mascota
+// update pet
     try {
       await axios.put(`http://3.211.68.117:8000/api/pets/${id}`, {
         name: form.name,
-        species: "Perro", // 🎯 especie fija
-        breed: form.breed === "Otro" ? customBreed : form.breed,
+        species: "Perro", // 
+        breed: form.breed === "Other" ? customBreed : form.breed,
         age: parseInt(form.age),
         admission_date: form.admission_date,
         notes: form.notes,
       });
 
-      setSuccessMsg("✅ Mascota actualizada correctamente.");
+      setSuccessMsg("✅ Pet successfully updated.");
       setTimeout(() => navigate("/pets"), 1200);
     } catch (err) {
-      console.error("❌ Error al actualizar mascota:", err);
-      setErrorMsg("❌ No se pudo actualizar la mascota.");
+      console.error("❌ Error updating pet:", err);
+      setErrorMsg("❌ The mascot could not be updated.");
     }
   };
 
   // ---------- UI ----------
   return (
-    <div className="p-6 min-h-screen bg-gray-900 text-white">
-      <h1 className="text-3xl font-bold mb-4">Editar Mascota</h1>
+ <div className="edit-pet-container">
+      <h1 className="edit-pet-title">Edit Pet</h1>
 
-      {errorMsg && <p className="text-red-400 mb-3">{errorMsg}</p>}
-      {successMsg && <p className="text-green-400 mb-3">{successMsg}</p>}
+      {errorMsg && <p className="edit-pet-error">{errorMsg}</p>}
+      {successMsg && <p className="edit-pet-success">{successMsg}</p>}
 
-      <form onSubmit={handleSubmit} className="space-y-4 max-w-lg">
-        {/* Nombre */}
+      <form onSubmit={handleSubmit} className="edit-pet-form">
+        {/* Name */}
         <div>
-          <label className="block mb-1 text-sm">Nombre</label>
+          <label>Name</label>
           <input
             type="text"
             name="name"
             value={form.name}
             onChange={handleChange}
             required
-            className="w-full px-3 py-2 text-black rounded"
           />
         </div>
 
-        {/* Raza */}
+        {/* Breed */}
         <div>
-          <label className="block mb-1 text-sm">Raza</label>
+          <label>Breed</label>
           <select
             value={form.breed}
             onChange={handleBreedSelect}
-            className="w-full px-3 py-2 text-black rounded"
             required
           >
             <option value="">-- Selecciona raza --</option>
@@ -130,23 +129,22 @@ export default function EditPetPage() {
           </select>
         </div>
 
-        {/* Raza personalizada */}
-        {form.breed === "Otro" && (
+        {/* Breed personalizada */}
+        {form.breed === "Other" && (
           <div>
-            <label className="block mb-1 text-sm">Escribe la raza</label>
+            <label>Write the breed</label>
             <input
               type="text"
               value={customBreed}
               onChange={(e) => setCustomBreed(e.target.value)}
               required
-              className="w-full px-3 py-2 text-black rounded"
             />
           </div>
         )}
 
-        {/* Edad */}
+        {/* Age */}
         <div>
-          <label className="block mb-1 text-sm">Edad</label>
+          <label>Age</label>
           <input
             type="number"
             name="age"
@@ -154,38 +152,41 @@ export default function EditPetPage() {
             value={form.age}
             onChange={handleChange}
             required
-            className="w-full px-3 py-2 text-black rounded"
           />
         </div>
 
-        {/* Fecha */}
+        {/* Time */}
         <div>
-          <label className="block mb-1 text-sm">Fecha de admisión</label>
+          <label>Date of admission</label>
           <input
             type="date"
             name="admission_date"
             value={form.admission_date}
             onChange={handleChange}
             required
-            className="w-full px-3 py-2 text-black rounded"
           />
         </div>
 
         {/* Notas */}
         <div>
-          <label className="block mb-1 text-sm">Notas</label>
+          <label>Notes</label>
           <textarea
             name="notes"
             value={form.notes}
             onChange={handleChange}
-            className="w-full px-3 py-2 text-black rounded"
           />
         </div>
 
-        {/* Submit */}
-        <button className="bg-indigo-600 hover:bg-indigo-700 transition text-white px-4 py-2 rounded">
-          Guardar cambios
+        {/* Button */}
+        <button type="submit" className="edit-pet-button">
+          Save changes
         </button>
+              <button 
+    type="button"
+    onClick={() => navigate("/dashboard")}
+    className="regresar-button">
+    Return
+  </button>
       </form>
     </div>
   );
