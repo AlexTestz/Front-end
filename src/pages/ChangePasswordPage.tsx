@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+import "../components/ChangePassword.css"; // Import your CSS styles
 export default function ChangePasswordPage() {
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
@@ -16,14 +16,14 @@ export default function ChangePasswordPage() {
     setSuccessMsg("");
 
     if (newPassword !== confirmPassword) {
-      setErrorMsg("❌ Las contraseñas nuevas no coinciden.");
+      setErrorMsg("❌ The new passwords do not match.");
       return;
     }
 
     try {
       const token = localStorage.getItem("token");
       if (!token) {
-        setErrorMsg("❌ Usuario no autenticado. Inicia sesión de nuevo.");
+        setErrorMsg("❌ User not authenticated. Log in again.");
         return;
       }
 
@@ -42,68 +42,68 @@ export default function ChangePasswordPage() {
       );
 
       if (res.status === 200) {
-        setSuccessMsg("✅ Contraseña cambiada correctamente.");
+        setSuccessMsg("✅ Password successfully changed.");
         setCurrentPassword("");
         setNewPassword("");
         setConfirmPassword("");
         setTimeout(() => navigate("/dashboard"), 1500);
       } else {
-        setErrorMsg(res.data?.detail || "❌ No se pudo cambiar la contraseña.");
+        setErrorMsg(res.data?.detail || "❌ The password could not be changed.");
       }
     } catch (err) {
-      console.error("❌ Error al cambiar contraseña:", err);
-      setErrorMsg("❌ Error inesperado al cambiar contraseña.");
+      console.error("❌ Error changing password:", err);
+      setErrorMsg("❌ Unexpected error when changing password.");
     }
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 p-6">
-      <h1 className="text-2xl font-bold mb-4">🔐 Cambiar Contraseña</h1>
+    <div className="change-password-container">
+  <h1 className="change-password-title"> Change Password</h1>
 
-      {errorMsg && <p className="text-red-600 mb-3">{errorMsg}</p>}
-      {successMsg && <p className="text-green-600 mb-3">{successMsg}</p>}
+  {errorMsg && <p className="change-password-error">{errorMsg}</p>}
+  {successMsg && <p className="change-password-success">{successMsg}</p>}
 
-      <form onSubmit={handleSubmit} className="space-y-4 max-w-md">
-        <div>
-          <label className="block mb-1">Contraseña Actual</label>
-          <input
-            type="password"
-            value={currentPassword}
-            onChange={(e) => setCurrentPassword(e.target.value)}
-            required
-            className="w-full px-3 py-2 border rounded"
-          />
-        </div>
-
-        <div>
-          <label className="block mb-1">Nueva Contraseña</label>
-          <input
-            type="password"
-            value={newPassword}
-            onChange={(e) => setNewPassword(e.target.value)}
-            required
-            className="w-full px-3 py-2 border rounded"
-          />
-        </div>
-
-        <div>
-          <label className="block mb-1">Confirmar Nueva Contraseña</label>
-          <input
-            type="password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            required
-            className="w-full px-3 py-2 border rounded"
-          />
-        </div>
-
-        <button
-          type="submit"
-          className="bg-black text-white px-4 py-2 rounded hover:bg-gray-800"
-        >
-          Cambiar Contraseña
-        </button>
-      </form>
+  <form onSubmit={handleSubmit} className="change-password-form">
+    <div>
+      <label>Current Password</label>
+      <input
+        type="password"
+        value={currentPassword}
+        onChange={(e) => setCurrentPassword(e.target.value)}
+        required
+      />
     </div>
+
+    <div>
+      <label>New Password</label>
+      <input
+        type="password"
+        value={newPassword}
+        onChange={(e) => setNewPassword(e.target.value)}
+        required
+      />
+    </div>
+
+    <div>
+      <label>Confirm New Password</label>
+      <input
+        type="password"
+        value={confirmPassword}
+        onChange={(e) => setConfirmPassword(e.target.value)}
+        required
+      />
+    </div>
+
+    <button type="submit" className="change-password-button">
+      Change Password
+    </button>
+                  <button 
+    type="button"
+    onClick={() => navigate("/dashboard")}
+    className="regresar-button">
+    Return
+  </button>
+  </form>
+</div>
   );
-}
+} 
