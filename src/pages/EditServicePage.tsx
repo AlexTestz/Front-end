@@ -48,14 +48,11 @@ export default function EditServicePage() {
     }
 
     try {
-      const res = await axios.put(
-        `http://3.211.68.117:8000/api/services/${id}`,
-        service
-      );
-      if (res.status === 200) {
-        setSuccessMsg("✅ Service updated successfully.");
-        setTimeout(() => navigate("/services"), 2000); // Redirect to services list
-      }
+          const res = await axios.get(`http://3.211.68.117:8000/api/services/${id}`);
+                if (res.status === 200) {
+                  setSuccessMsg("✅ Service updated successfully.");
+                  setTimeout(() => navigate("/services"), 2000); // Redirect to services list
+                }
     } catch (err) {
       console.error("❌ Error updating service:", err);
       setErrorMsg("❌ Error updating service.");

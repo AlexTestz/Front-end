@@ -16,7 +16,7 @@ export default function ServicesListPage() {
       const res = await axios.get("http://3.211.68.117:8000/api/services/"); // URL de tu API
       setServices(res.data); // Asegúrate de que la respuesta sea en el formato adecuado
     } catch (err) {
-      console.error("❌ Error retrieving services:", err);
+      console.error("❌ Error retrieving services:", err); 
       setErrorMsg("❌ Services could not be loaded.");
     }
   };
