@@ -20,7 +20,7 @@ export default function EditServicePage() {
   useEffect(() => {
     const fetchService = async () => {
       try {
-        const res = await axios.get(`http://3.211.68.117:8000/api/services/${id}`);
+        const res = await axios.get(`http://3.211.68.117:8000/api/services/name/${id}`);
         setService(res.data); // Asegúrate de que la respuesta contiene los datos correctamente
       } catch (err) {
         setErrorMsg("❌ Error loading service data.");
