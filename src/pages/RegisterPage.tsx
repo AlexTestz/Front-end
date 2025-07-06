@@ -21,7 +21,7 @@ export default function RegisterPage() {
       username,
       email,
       password,
-      role: "usuario", // Assuming the role is always 'user' for registration
+      role: "admin", // Assuming the role is always 'user' for registration
     };
 
     try {
