@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import '../components/PetPage.css';
 
@@ -18,6 +18,7 @@ export default function CreatePetPage() {
   const [notes, setNotes] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
+  const navigate = useNavigate();
 
   const dogBreeds = [
     "Labrador Retriever", "Pastor Alemán", "Bulldog", "Poodle", "Chihuahua",
@@ -171,9 +172,9 @@ export default function CreatePetPage() {
       </div>
 
       <button type="submit" className="pet-submit-button">
-        Register Pet
-      </button>
-    </form>
-  </div>
-);
+        Register Pet</button>
+
+      </form>
+    </div>
+  );
 }
