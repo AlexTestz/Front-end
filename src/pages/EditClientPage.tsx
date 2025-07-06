@@ -54,31 +54,34 @@ export default function EditClientPage() {
   };
 
   return (
-    <div className="p-6 min-h-screen bg-gray-50">
-      <h1 className="text-2xl font-bold mb-4">Editar Cliente</h1>
+     <div className="edit-client-container">
+  <h1 className="edit-client-title">Editar Cliente</h1>
 
-      {errorMsg && <p className="text-red-600">{errorMsg}</p>}
-      {successMsg && <p className="text-green-600">{successMsg}</p>}
+  {errorMsg && <p className="edit-client-error">{errorMsg}</p>}
+  {successMsg && <p className="edit-client-success">{successMsg}</p>}
 
-      <form onSubmit={handleSubmit} className="space-y-4 max-w-md">
-        {["name", "last_name", "email", "phone"].map((field) => (
-          <div key={field}>
-            <label className="block mb-1 capitalize">{field.replace("_", " ")}</label>
-            <input
-              type="text"
-              name={field}
-              value={(form as any)[field]}
-              onChange={handleChange}
-              required
-              className="w-full px-3 py-2 border rounded"
-            />
-          </div>
-        ))}
+  <form onSubmit={handleSubmit} className="edit-client-form">
+    {["name", "last_name", "email", "phone"].map((field) => (
+      <div key={field}>
+        <label>{field.replace("_", " ")}</label>
+        <input
+          type="text"
+          name={field}
+          value={(form as any)[field]}
+          onChange={handleChange}
+          required
+        />
+      </div>
+    ))}
 
-        <button className="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">
-          Guardar cambios
-        </button>
-      </form>
-    </div>
+    <button className="edit-client-button">Guardar cambios</button>
+      <button 
+    type="button"
+    onClick={() => navigate("/dashboard")}
+    className="regresar-button">
+    Regresar
+  </button>
+  </form>
+</div>
   );
 }
