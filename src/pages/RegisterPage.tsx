@@ -31,9 +31,7 @@ export default function RegisterPage() {
 
       if (res.status === 200 || res.status === 201) {
         setSuccessMsg("✅ Registration successful, redirecting to login...");
-        setTimeout(() => {
-          navigate("/dashboard"); // Redirect to the customer creation page
-        }, 2000);
+
       }
 
     } catch (err: any) {
