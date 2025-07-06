@@ -49,7 +49,7 @@ export default function Dashboard() {
           onClick={() => navigate("/clients")}
           className="btn btn-purple"
         >
-          Ver clientes
+          View customers
         </button>
 
         <button
