@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import "../components/EditClient.css"; // Assuming you have a CSS file for styles
 
 export default function EditClientPage() {
   const { id } = useParams();
@@ -16,15 +17,15 @@ export default function EditClientPage() {
 
   const [errorMsg, setErrorMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
-// Cargar datos del cliente al iniciar
-  // Asegúrate de que el ID es válido antes de hacer la solicitud
+// Load customer data on startup
+  // Make sure the ID is valid before making the request
   useEffect(() => {
     const fetchClient = async () => {
       try {
         const res = await axios.get(`http://3.211.68.117:8000/api/clients/${id}`);
         setForm(res.data.client);
       } catch (err) {
-        setErrorMsg("❌ Error al cargar datos del cliente.");
+        setErrorMsg("❌ Error loading customer data.");
         console.error(err);
       }
     };
@@ -41,21 +42,21 @@ export default function EditClientPage() {
     e.preventDefault();
     setErrorMsg("");
     setSuccessMsg("");
-// Validar campos requeridos
-//actualizar cliente
+// Validate required fields
+//update customer
     try {
       await axios.put(`http://3.211.68.117:8000/api/clients/${id}`, form);
-      setSuccessMsg("✅ Cliente actualizado correctamente.");
+      setSuccessMsg("✅ Client successfully updated.");
       setTimeout(() => navigate("/clients"), 1500);
     } catch (err) {
-      console.error("❌ Error al actualizar cliente:", err);
-      setErrorMsg("❌ No se pudo actualizar el cliente.");
+      console.error("❌ Error updating client:", err);
+      setErrorMsg("❌ The client could not be updated..");
     }
   };
 
   return (
      <div className="edit-client-container">
-  <h1 className="edit-client-title">Editar Cliente</h1>
+  <h1 className="edit-client-title">Edit Customer</h1>
 
   {errorMsg && <p className="edit-client-error">{errorMsg}</p>}
   {successMsg && <p className="edit-client-success">{successMsg}</p>}
@@ -74,12 +75,12 @@ export default function EditClientPage() {
       </div>
     ))}
 
-    <button className="edit-client-button">Guardar cambios</button>
+    <button className="edit-client-button">Save changes</button>
       <button 
     type="button"
     onClick={() => navigate("/dashboard")}
     className="regresar-button">
-    Regresar
+    Return
   </button>
   </form>
 </div>

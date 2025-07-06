@@ -1,0 +1,124 @@
+.edit-client-container {
+  padding: 40px 20px;
+  min-height: 100vh;
+  background-color: transparent;
+  color: #1a202c;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Title */
+.edit-client-title {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 24px;
+  color: #000000;
+  text-align: center;
+}
+
+/* Message */
+.edit-client-error {
+  color: #fc0000;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.edit-client-success {
+  color: #068133;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+/* Forms */
+.edit-client-form {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-sizing: border-box;
+}
+
+.edit-client-form label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #000000;
+}
+
+.edit-client-form input {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 6px;
+  border: 1px solid #000000;
+  font-size: 1rem;
+  color: #333;
+  background-color: #f9f9f9;
+  box-sizing: border-box;
+}
+
+/* Buttons */
+.edit-client-button,
+.regresar-button {
+  background-color: #9b7610b7;
+  color: #000;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+  width: 100%;
+}
+
+.edit-client-button:hover,
+.regresar-button:hover {
+  background-color: #d8ae25;
+}
+
+/* ---------------- Responsive ---------------- */
+
+@media (max-width: 768px) {
+  .edit-client-title {
+    font-size: 2rem;
+  }
+
+  .edit-client-form input {
+    font-size: 0.95rem;
+    padding: 9px 12px;
+  }
+
+  .edit-client-button,
+  .regresar-button {
+    font-size: 0.95rem;
+    padding: 10px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .edit-client-title {
+    font-size: 1.5rem;
+  }
+
+  .edit-client-form {
+    gap: 12px;
+  }
+
+  .edit-client-form label {
+    font-size: 0.85rem;
+  }
+
+  .edit-client-form input {
+    font-size: 0.9rem;
+    padding: 8px 10px;
+  }
+
+  .edit-client-button,
+  .regresar-button {
+    font-size: 0.9rem;
+    padding: 8px 10px;
+  }
+}
