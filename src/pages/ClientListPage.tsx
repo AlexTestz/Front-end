@@ -14,20 +14,20 @@ export default function ClientsListPage() {
       const res = await axios.get("http://3.211.68.117:8000/api/clients/");
       setClients(res.data.clients);
     } catch (err) {
-      console.error("❌ Error al obtener clientes:", err);
-      setErrorMsg("❌ No se pudieron cargar los clientes.");
+      console.error("❌ Error retrieving clients:", err);
+      setErrorMsg("❌ Clients could not be loaded.");
     }
   };
 
   const deleteClient = async (id: string) => {
-    if (!confirm("¿Estás seguro de eliminar este cliente?")) return;
+    if (!confirm("Are you sure you want to delete this customer?")) return;
 
     try {
       await axios.delete(`http://3.211.68.117:8000/api/clients/${id}`);
       setClients((prev) => prev.filter((c: any) => c.id !== id));
     } catch (err) {
-      console.error("❌ Error al eliminar:", err);
-      setErrorMsg("❌ No se pudo eliminar el cliente.");
+      console.error("❌ Error deleting:", err);
+      setErrorMsg("❌ The client could not be deleted.");
     }
   };
 
@@ -43,13 +43,13 @@ export default function ClientsListPage() {
 
   return (
  <div className="client-list-container">
-  <h1 className="client-list-title"> Lista de Clientes</h1>
+  <h1 className="client-list-title"> Client List</h1>
 
   {errorMsg && <p className="client-error-message">{errorMsg}</p>}
 
   <input
     type="text"
-    placeholder="Buscar por nombre o email..."
+    placeholder="Search by name or email..."
     value={searchTerm}
     onChange={(e) => setSearchTerm(e.target.value)}
     className="client-search-input"
@@ -59,10 +59,10 @@ export default function ClientsListPage() {
     <table className="client-table">
       <thead>
         <tr>
-          <th>Nombre</th>
+          <th>Name</th>
           <th>Email</th>
-          <th>Teléfono</th>
-          <th>Acciones</th>
+          <th>Phone</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -76,13 +76,13 @@ export default function ClientsListPage() {
                 className="btn-edit"
                 onClick={() => navigate(`/edit-client/${client.id}`)}
               >
-                Editar
+                Edit
               </button>
               <button
                 className="btn-delete"
                 onClick={() => deleteClient(client.id)}
               >
-                Eliminar
+                Delete
               </button>
             </td>
           </tr>
@@ -90,7 +90,7 @@ export default function ClientsListPage() {
         {filteredClients.length === 0 && (
           <tr>
             <td colSpan={4} className="no-clients-msg">
-              No hay clientes coincidentes.
+              There are no matching customers.
             </td>
           </tr>
         )}
@@ -101,7 +101,7 @@ export default function ClientsListPage() {
     onClick={() => navigate("/dashboard")}
     className="regresar-button"
   >
-    Regresar
+    Return
   </button>
   </div>
 </div>
