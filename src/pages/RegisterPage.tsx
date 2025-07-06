@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import '../components/RegistePage.css';
 
 export default function RegisterPage() {
   const [username, setUsername] = useState("");
@@ -20,32 +21,32 @@ export default function RegisterPage() {
       username,
       email,
       password,
-      role: "usuario",
+      role: "admin",
     };
 
     try {
-      console.log("📤 Enviando datos:", payload);
+      console.log("📤 Sending data:", payload);
 
       const res = await axios.post("http://3.211.68.117:8000/api/users/register", payload);
 
       if (res.status === 200 || res.status === 201) {
-        setSuccessMsg("✅ Registro exitoso, redirigiendo al login...");
+        setSuccessMsg("✅ Registration successful, redirecting to login...");
         setTimeout(() => {
-          navigate("/create-client"); // Redirige a la página de creación de cliente
+          navigate("/create-client"); // Redirect to the customer creation page
         }, 2000);
       }
 
     } catch (err: any) {
-      console.error("❌ Error de respuesta:", err);
+      console.error("❌ Response error:", err);
 
       const errorData = err.response?.data;
-      let detail: string | string[] = "❌ Error inesperado del servidor.";
+      let detail: string | string[] = "❌ Unexpected server error.";
 
       if (Array.isArray(errorData?.detail)) {
-        // Caso 422 Unprocessable Entity con múltiples validaciones
+        // Case 422 Unprocessable Entity with multiple validations
         detail = errorData.detail.map((e: any) => e.msg);
       } else if (typeof errorData?.detail === "string") {
-        // Caso de HTTPException con mensaje plano
+        // Case of HTTPException with plain message
         detail = errorData.detail;
       } else if (typeof errorData?.message === "string") {
         // Fallback
@@ -57,74 +58,69 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-100">
-      <form
-        onSubmit={handleSubmit}
-        className="bg-white p-6 rounded-xl shadow-md w-full max-w-sm"
-      >
-        <h2 className="text-2xl font-bold mb-4">Crear cuenta</h2>
+     <div className="register-form-container">
+    <form onSubmit={handleSubmit} className="register-form">
+      <h2>Create account</h2>
 
-        {/* Mensajes de error (pueden ser lista o texto) */}
-        {Array.isArray(errorMsg) ? (
-          <ul className="text-red-600 text-sm mb-3 list-disc ml-5">
-            {errorMsg.map((msg, i) => (
-              <li key={i}>{msg}</li>
-            ))}
-          </ul>
-        ) : (
-          errorMsg && <p className="text-red-600 text-sm mb-3">{errorMsg}</p>
-        )}
+      {Array.isArray(errorMsg) ? (
+        <ul className="error-message-list">
+          {errorMsg.map((msg, i) => (
+            <li key={i}>{msg}</li>
+          ))}
+        </ul>
+      ) : (
+        errorMsg && <p className="error-message">{errorMsg}</p>
+      )}
 
-        {/* Mensaje de éxito */}
-        {successMsg && <p className="text-green-600 text-sm mb-3">{successMsg}</p>}
+      {successMsg && <p className="success-message">{successMsg}</p>}
 
-        <div className="mb-4">
-          <label className="block mb-1 text-sm font-medium">Nombre de usuario</label>
-          <input
-            type="text"
-            className="w-full px-3 py-2 border rounded-md"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-        </div>
+      <div className="form-group">
+        <label>Username</label>
+        <input
+          type="text"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          required
+        />
+      </div>
 
-        <div className="mb-4">
-          <label className="block mb-1 text-sm font-medium">Email</label>
-          <input
-            type="email"
-            className="w-full px-3 py-2 border rounded-md"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
+      <div className="form-group">
+        <label>Email</label>
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+      </div>
 
-        <div className="mb-4">
-          <label className="block mb-1 text-sm font-medium">Contraseña</label>
-          <input
-            type="password"
-            className="w-full px-3 py-2 border rounded-md"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
+      <div className="form-group">
+        <label>Password</label>
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+      </div>
 
+      <button type="submit" className="register-button">
+        Sign up
+      </button>
+          
         <button
-          type="submit"
-          className="bg-green-600 text-white w-full py-2 rounded-md hover:bg-green-700 transition"
+          type="button"
+          onClick={() => navigate("/login")} // Esto redirige a la página de login
+          className="initial-button"
         >
-          Registrarse
+          Back to Home
         </button>
 
-        <p className="mt-3 text-sm text-center">
-          ¿Ya tienes cuenta?{" "}
-          <a href="/login" className="text-blue-600 hover:underline">
-            Inicia sesión aquí
-          </a>
-        </p>
-      </form>
-    </div>
-  );
+      <p className="login-link">
+        Already have an account?{" "}
+        <a href="/login">Log in here</a>
+      </p>
+    </form>
+  </div>
+);
 }
