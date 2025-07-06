@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
-import ".components/EditPetPage.css"; // Assuming you have a CSS file for styles
+import ".components/EditPet.css"; // Assuming you have a CSS file for styles
 
 export default function EditPetPage() {
   const { id } = useParams();
