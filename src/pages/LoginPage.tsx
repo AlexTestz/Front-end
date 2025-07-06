@@ -30,7 +30,6 @@ export default function LoginPage() {
       let detail: string | string[] = "❌ Error inesperado del servidor..";
 
       if (Array.isArray(errorData?.detail)) {
-        // Errores múltiples (por ejemplo, validación FastAPI)
         detail = errorData.detail.map((e: any) => e.msg);
       } else if (typeof errorData?.detail === "string") {
         detail = errorData.detail;

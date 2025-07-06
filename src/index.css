@@ -70,3 +70,25 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+/* Para los campos de entrada */
+input:focus {
+  border-color: #4a90e2;
+  box-shadow: 0 0 5px rgba(74, 144, 226, 0.8);
+}
+
+/* Botón de Entrar */
+button:hover {
+  background-color: #007bff;
+  transform: scale(1.05);
+}
+
+/* Enlace de "Regístrate aquí" */
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
