@@ -48,17 +48,25 @@ export default function EditServicePage() {
     }
 
     try {
-          const res = await axios.get(`http://3.211.68.117:8000/api/services/${id}`);
-                if (res.status === 200) {
-                  setSuccessMsg("✅ Service updated successfully.");
-                  setTimeout(() => navigate("/services"), 2000); // Redirect to services list
-                }
+      // Hacer una solicitud PUT para actualizar el servicio
+      const res = await axios.put(`http://3.211.68.117:8000/api/services/name/${service.name}`, 
+        {
+          name: service.name,
+          description: service.description,
+          price: service.price
+        }
+      );
+
+      // Si la actualización es exitosa
+      if (res.status === 200) {
+        setSuccessMsg("✅ Service updated successfully.");
+        setTimeout(() => navigate("/services"), 2000); // Redirigir a la lista de servicios
+      }
     } catch (err) {
       console.error("❌ Error updating service:", err);
       setErrorMsg("❌ Error updating service.");
     }
   };
-
   return (
     <div className="edit-service-container">
       <h1>Edit Service</h1>
