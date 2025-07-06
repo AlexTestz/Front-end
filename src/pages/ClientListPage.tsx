@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import "./ClientsList.css"; // Import your CSS styles
+import "../components/ClientsList.css"; // Import your CSS styles
 
 export default function ClientsListPage() {
   const [searchTerm, setSearchTerm] = useState("");
