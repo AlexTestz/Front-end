@@ -11,7 +11,7 @@ body {
   
 /* Wallpaper for the login page only */
 
- background-image: url(‘../layouts/Login.jpg’); /* Path to your image */
+ background-image: url('../layouts/dashboard.jpg'); /* Path to your image */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
