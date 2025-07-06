@@ -10,6 +10,9 @@ import PetListPage from "../pages/PetListPage";
 import EditPetPage from "../pages/EditPetPage";
 import EditClientPage from "../pages/EditClientPage";
 import ChangePasswordPage from "../pages/ChangePasswordPage";
+import ServicesListPage from "../pages/ServicesListPage"; // Asegúrate de tener la página de listar servicios
+import CreateServicePage from "../pages/CreateServicePage"; // Asegúrate de tener la página de crear servicio
+import EditServicePage from "../pages/EditServicePage"; // Asegúrate de tener la página de editar servicio
 
 
 
@@ -29,7 +32,11 @@ export default function AppRouter() {
         <Route path="/edit-pet/:id" element={<EditPetPage />} />
         <Route path="/edit-client/:id" element={<EditClientPage />} />
         <Route path="/change-password" element={<ChangePasswordPage />} />
-        
+        <Route path="/services" element={<ServicesListPage />} />
+        <Route path="/create-service" element={<CreateServicePage />} />
+        <Route path="/edit-service/:id" element={<EditServicePage />} />
+
+
         {/* Ruta protegida para el dashboard */}
 
 

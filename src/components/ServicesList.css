@@ -1,0 +1,161 @@
+/* Contenedor principal */
+.services-list-container {
+  padding: 40px 20px;
+  min-height: 100vh;
+  background-color: transparent;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #1a202c;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Título */
+.services-list-container h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 24px;
+  color: #2d3748;
+  text-align: center;
+}
+
+/* Mensaje de error */
+.services-list-container p {
+  color: #e53e3e;
+  font-size: 0.95rem;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+/* Lista de servicios */
+.services-list-container ul {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+  max-width: 700px;
+}
+
+/* Cada servicio */
+.services-list-container li {
+  background-color: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Botones de acción */
+.services-list-container li button {
+  margin-right: 8px;
+  padding: 8px 14px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.services-list-container li button:hover {
+  opacity: 0.9;
+}
+
+.services-list-container li button:nth-child(2) {
+  background-color: #ecc94b;
+  color: white;
+}
+
+.services-list-container li button:nth-child(3) {
+  background-color: #e53e3e;
+  color: white;
+}
+
+/* Botón crear servicio */
+.services-list-container > button:last-child {
+  margin-top: 24px;
+  background-color: #9b7610b7;
+  color: black;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.services-list-container > button:last-child:hover {
+  background-color: #d8ae25;
+}
+
+/* ---------------- Modal de Confirmación ---------------- */
+.confirm-delete-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.confirm-delete-modal > div {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+}
+
+.confirm-delete-modal p {
+  margin-bottom: 20px;
+  font-weight: 600;
+  color: #1a202c;
+}
+
+.confirm-delete-modal button {
+  margin: 0 8px;
+  padding: 10px 16px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.confirm-delete-modal button:first-of-type {
+  background-color: #e53e3e;
+  color: white;
+}
+
+.confirm-delete-modal button:last-of-type {
+  background-color: #a0aec0;
+  color: white;
+}
+
+/* ---------------- Responsive ---------------- */
+@media (max-width: 600px) {
+  .services-list-container h1 {
+    font-size: 2rem;
+  }
+
+  .services-list-container li {
+    padding: 12px;
+  }
+
+  .services-list-container li button {
+    font-size: 0.85rem;
+    padding: 6px 10px;
+  }
+
+  .confirm-delete-modal > div {
+    padding: 20px;
+  }
+}
