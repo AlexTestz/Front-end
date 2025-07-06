@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import '../components/ClientPage.css'; 
 
 export default function CreateClientPage() {
   const [name, setName] = useState("");
@@ -27,7 +28,7 @@ export default function CreateClientPage() {
       address,
     };
 
-    console.log("📤 Enviando datos del cliente:", payload);
+    console.log("📤 Sending customer data:", payload);
 // Registrar cliente
     try {
       const res = await axios.post("http://3.211.68.117:8000/api/clients", payload, {
@@ -37,10 +38,10 @@ export default function CreateClientPage() {
       if (res.status === 201 || res.status === 200) {
         const clientId = res.data.client?.id;
 
-        setSuccessMsg("✅ Cliente registrado correctamente. Redirigiendo...");
+        setSuccessMsg("✅ Customer successfully registered. Redirecting...");
 
         setTimeout(() => {
-          // 🔁 Redirige a /create-pet con el clientId en la URL
+          // 🔁 Redirect to /create-pet with the clientId in the URL
           navigate(`/create-pet?clientId=${clientId}`);
         }, 2000);
       } else {
@@ -48,83 +49,54 @@ export default function CreateClientPage() {
         setErrorMsg(`❌ ${detail}`);
       }
     } catch (err: any) {
-      setErrorMsg("❌ Error inesperado en el servidor.");
-      console.error("❌ Error al registrar cliente:", err);
+      setErrorMsg("❌ Unexpected server error.");
+      console.error("❌ Error registering customer:", err);
     }
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-100">
-      <form
-        onSubmit={handleSubmit}
-        className="bg-white p-6 rounded-xl shadow-md w-full max-w-md"
-      >
-        <h2 className="text-2xl font-bold mb-4">Datos del Cliente</h2>
+    <div className="client-form-container">
+      <form onSubmit={handleSubmit} className="client-form">
+        <h2>Datos del Cliente</h2>
 
-        {errorMsg && <p className="text-red-600 text-sm mb-3">{errorMsg}</p>}
-        {successMsg && <p className="text-green-600 text-sm mb-3">{successMsg}</p>}
+        {errorMsg && <p className="error-message">{errorMsg}</p>}
+        {successMsg && <p className="success-message">{successMsg}</p>}
 
-        <div className="mb-4">
-          <label className="block text-sm font-medium mb-1">Nombre</label>
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-            className="w-full px-3 py-2 border rounded"
-          />
+        <div className="form-group">
+          <label>Nombre</label>
+          <input type="text" value={name} onChange={(e) => setName(e.target.value)} required />
         </div>
 
-        <div className="mb-4">
-          <label className="block text-sm font-medium mb-1">Apellido</label>
-          <input
-            type="text"
-            value={lastname}
-            onChange={(e) => setLastname(e.target.value)}
-            required
-            className="w-full px-3 py-2 border rounded"
-          />
+        <div className="form-group">
+          <label>Apellido</label>
+          <input type="text" value={lastname} onChange={(e) => setLastname(e.target.value)} required />
         </div>
 
-        <div className="mb-4">
-          <label className="block text-sm font-medium mb-1">Correo electrónico</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            className="w-full px-3 py-2 border rounded"
-          />
+        <div className="form-group">
+          <label>Correo electrónico</label>
+          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
         </div>
 
-        <div className="mb-4">
-          <label className="block text-sm font-medium mb-1">Dirección</label>
-          <input
-            type="text"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-            required
-            className="w-full px-3 py-2 border rounded"
-          />
+        <div className="form-group">
+          <label>Dirección</label>
+          <input type="text" value={address} onChange={(e) => setAddress(e.target.value)} required />
         </div>
 
-        <div className="mb-4">
-          <label className="block text-sm font-medium mb-1">Teléfono</label>
-          <input
-            type="tel"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-            required
-            className="w-full px-3 py-2 border rounded"
-          />
+        <div className="form-group">
+          <label>Teléfono</label>
+          <input type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} required />
         </div>
+        <button type="submit">Registrar Cliente</button>
+        <div className="regresar">
+  <button 
+    type="button"
+    onClick={() => navigate("/dashboard")}
+    className="bg-gray-500 text-white w-full py-2 rounded mt-3 hover:bg-gray-600 transition"
+  >
+    Regresar
+  </button>
+</div>
 
-        <button
-          type="submit"
-          className="bg-indigo-600 text-white w-full py-2 rounded hover:bg-indigo-700 transition"
-        >
-          Registrar Cliente
-        </button>
       </form>
     </div>
   );
