@@ -70,6 +70,12 @@ export default function CreatePetPage() {
         setAdmissionDate("");
         setNotes("");
         if (!clientIdFromUrl) setClientId("");
+
+           // dashboard redirection
+    setTimeout(() => {
+      navigate("/dashboard"); // Redirige al dashboard
+    }, 2000); // wait 2 seconds before redirecting
+
       } else {
         const detail = res.data?.detail || "❌ Error registering pet.";
         setErrorMsg(`❌ ${detail}`);
