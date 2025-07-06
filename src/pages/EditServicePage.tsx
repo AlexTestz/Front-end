@@ -49,13 +49,14 @@ export default function EditServicePage() {
 
     try {
       // Hacer una solicitud PUT para actualizar el servicio
-      const res = await axios.put(`http://3.211.68.117:8000/api/services/name/${service.name}`, 
-        {
-          name: service.name,
-          description: service.description,
-          price: service.price
-        }
-      );
+const res = await axios.put(
+  `http://3.211.68.117:8000/api/services/name/${encodeURIComponent(service.name)}`, 
+  {
+    name: service.name,
+    description: service.description,
+    price: service.price,
+  }
+);
 
       // Si la actualización es exitosa
       if (res.status === 200) {
