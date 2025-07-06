@@ -20,7 +20,6 @@ export default function LoginPage() {
       const res = await axios.post("http://3.211.68.117:8000/api/users/login", {
         username_or_email: email,
         password,
-        role: "admin", // Assuming the role is always 'user' for login
       });
 
       const token = res.data.access_token;
