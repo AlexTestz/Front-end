@@ -1,0 +1,97 @@
+/* General container styles */
+.dashboard-container {
+  display: flex;
+  flex-direction: column; /* Change so that the content is vertical */
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Occupies the entire height of the screen */
+  padding: 20px;
+  width: 100%;
+  position: relative;
+  background-image: url(‘../layouts/dashboard-background.jpg’); /* Make sure the image exists */
+  background-size: cover;
+  background-position: center;
+
+}
+
+/* Dashboard title */
+.dashboard-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #000000;
+  margin-bottom: 30px;
+  text-align: center;
+  font-style: italic; /* Italics */
+  margin-top: 20px; /* Removed the negative margin */
+  padding: 0 10px;
+}
+
+/* Styles for the buttons */
+.dashboard-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 400px;
+  margin-left: 0; /* Removed the left margin */
+  padding: 0 20px;
+}
+
+/* Button styles */
+.btn {
+  width: 100%;
+  padding: 20px;
+  font-size: 1.1rem;
+  border-radius: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  border: none;
+  text-align: center;
+}
+
+/* Hover effect */
+.btn:hover {
+  transform: translateY(-4px);
+}
+
+/* Specific buttons */
+.btn-blue, .btn-green, .btn-purple, .btn-yellow, .btn-red {
+  background-color: rgba(3, 3, 3, 0); /* White with 10% opacity */
+  color: rgb(58, 48, 48);
+  border: 1px solid rgb(255, 237, 237); /* Soft border */
+  backdrop-filter: blur(4px); /* Blurs the background */
+}
+
+.btn-blue:hover, .btn-green:hover, .btn-purple:hover, .btn-yellow:hover, .btn-red:hover {
+  background-color: transparent;
+  color: rgb(0, 0, 0);
+  border: 2px solid rgb(0, 0, 0);
+}
+
+/* Media queries for small screens */
+@media (max-width: 768px) {
+  .dashboard-title {
+    font-size: 2rem;
+  }
+
+  .dashboard-buttons {
+    max-width: 100%;
+    padding: 0 10px;
+  }
+
+  .btn {
+    padding: 15px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-title {
+    font-size: 1.5rem;
+  }
+
+  .btn {
+    padding: 12px;
+    font-size: 0.9rem;
+  }
+}
