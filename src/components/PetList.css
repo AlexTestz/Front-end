@@ -39,7 +39,7 @@
 .pet-table-wrapper {
   overflow-x: auto;
   overflow-y: auto;
-   max-height: 400px; 
+   max-height: 800px; 
 }
 
 .pet-table {
