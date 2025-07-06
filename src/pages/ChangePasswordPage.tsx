@@ -1,7 +1,10 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import "../components/ChangePassword.css"; // Import your CSS styles
+import "../components/ChangePassword.css";
+
+
+
 export default function ChangePasswordPage() {
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
