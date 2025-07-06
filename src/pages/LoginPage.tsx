@@ -1,8 +1,8 @@
 import { useState } from "react"; 
 import axios from "axios";
-import { useAuth } from "../context/AuthContext"; // Ajusta la ruta para que apunte a /context/AuthContext
+import { useAuth } from "../context/AuthContext"; // Adjust the path so that it points to /context/AuthContext
 import { useNavigate } from "react-router-dom";
-import '../components/LoginPage.css'; // Asegúrate de que el CSS esté en el mismo directorio
+import '../components/LoginPage.css'; // Make sure the CSS is in the same directory.
 
 export default function LoginPage() {
   const { login } = useAuth();
@@ -28,7 +28,7 @@ export default function LoginPage() {
       navigate("/dashboard");
     } catch (err: any) {
       const errorData = err.response?.data;
-      let detail: string | string[] = "❌ Error inesperado del servidor..";
+      let detail: string | string[] = "❌ Unexpected server error.";
 
       if (Array.isArray(errorData?.detail)) {
         detail = errorData.detail.map((e: any) => e.msg);
@@ -49,7 +49,7 @@ export default function LoginPage() {
         onSubmit={handleSubmit}
         className="login-form"
       >
-        <h2 className="login-title tracking-tight text-2xl font-bold text-center">Iniciar sesión</h2>
+        <h2 className="login-title tracking-tight text-2xl font-bold text-center">Log in</h2>
 
 
         {/* Mostrar mensajes de error */}
@@ -75,7 +75,7 @@ export default function LoginPage() {
         </div>
 
         <div className="input-group">
-          <label className="input-label">Contraseña</label>
+          <label className="input-label">Password</label>
           <input
             type="password"
             className="input-field"
@@ -89,13 +89,13 @@ export default function LoginPage() {
           type="submit"
           className="submit-btn"
         >
-          Entrar
+          Enter
         </button>
 
         <p className="signup-link">
-          ¿No tienes cuenta?{" "}
+          Don't have an account?{" "}
           <a href="/register" className="signup-link-text">
-            Regístrate aquí
+            Register here
           </a>
         </p>
       </form>

@@ -1,51 +1,51 @@
-/* Fondo de pantalla para toda la página */
+/* Full-page background */
 body {
   font-family: Arial, sans-serif;
-  background-color: #363434; /* Fondo blanco para la página */
+  background-color: #363434; /* White background for the page */
   margin: 0;
   padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Altura completa de la pantalla */
+  height: 100vh; /* Full screen height */
   
-/* Fondo de pantalla solo para la página de login */
+/* Wallpaper for the login page only */
 
- background-image: url('../layouts/inicio.jpg'); /* Ruta a tu imagen */
+ background-image: url(‘../layouts/Login.jpg’); /* Path to your image */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 100vh; /* Hace que ocupe toda la altura de la pantalla */
+  height: 100vh; /* Makes it occupy the entire height of the screen */
 
 
 }
 
-/* Contenedor del formulario centrado */
+/* Centered form container */
 .login-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100%; /* Asegura que ocupe toda la altura de la pantalla */
+  height: 100%; /* Ensures it occupies the entire height of the screen */
   padding: 20px;
   width: 100%;
-  position: absolute; /* Coloca el formulario sobre el fondo */
-  top: 0; /* Posiciónalo en la parte superior */
-  left: 0; /* Posiciónalo a la izquierda */
-  z-index: 1; /* Asegura que el formulario se coloque sobre la imagen */
+  position: absolute; /* Places the form over the background */
+  top: 0; /* Positions it at the top */
+  left: 0; /* Positions it on the left */
+  z-index: 1; /* Ensures that the form is placed over the image */
 }
 
-/* Estilo del formulario */
+/* Form style */
 .login-form {
-  background-color: rgba(255, 255, 255, 0.2); /* Semi blanco */
-  backdrop-filter: blur(10px);               /* Desenfoque de fondo */
-  -webkit-backdrop-filter: blur(10px);       /* Compatibilidad Safari */
+  background-color: rgba(255, 255, 255, 0.2); /* Semi-white */
+  backdrop-filter: blur(10px);               /* Background blur */
+  -webkit-backdrop-filter: blur(10px);       /* Safari compatibility */
   padding: 40px;
   border-radius: 12px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 400px;
   margin: 0 auto;
-  border: 1px solid rgba(255, 255, 255, 0.3); /* Opcional: borde translúcido */
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Optional: translucent border */
 
 }
 
@@ -58,20 +58,20 @@ body {
   font-weight: bold;
   margin-bottom: 24px;
   text-align: center;
-  color: #0e0d0d; /* Color violeta */
+  color: #0e0d0d; /* Violet color */
   
 }
 
 .error-messages,
 .error-message {
-  color: #e53e3e; /* Rojo */
+  color: #e53e3e; /* Red */
   font-size: 0.875rem;
   margin-bottom: 12px;
 }
 
 .input-group {
   margin-bottom: 20px;
-    color: #000000; /* Color violeta */
+    color: #000000; /* Violet color */
 
 }
 
@@ -93,7 +93,7 @@ body {
 
 .input-field:focus {
   outline: none;
-  border-color: #5A67D8; /* Resalta el borde al hacer focus */
+  border-color: #5A67D8; /* Highlight the border when focused */
 }
 
 .submit-btn {
@@ -106,15 +106,15 @@ body {
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s;
-  margin-top: 20px; /* Añadido espacio arriba del botón */
-  background-color: rgba(48, 17, 17, 0.103); /* Blanco con 10% de opacidad */
+  margin-top: 20px; /* Added space above the button */
+  background-color: rgba(48, 17, 17, 0.103); /* White with 10% opacity */
   color: rgb(0, 0, 0);
-  border: 1px solid rgb(0, 0, 0); /* Borde suave */
-  backdrop-filter: blur(4px); /* Difumina el fondo */
+  border: 1px solid rgb(0, 0, 0); /* Soft border */
+  backdrop-filter: blur(4px); /* Blurs the background */
 }
 
 .submit-btn:hover {
-  background-color: #5c5c58; /* Color más oscuro al pasar el ratón */
+  background-color: #5c5c58; /* Darker color on mouseover */
 }
 
 .signup-link {
