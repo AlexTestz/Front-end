@@ -38,6 +38,8 @@
 /* Table */
 .client-table-wrapper {
   overflow-x: auto;
+    overflow-y: auto;
+   max-height: 800px; 
 }
 
 .client-table {
