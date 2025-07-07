@@ -71,7 +71,7 @@ export default function ServicesListPage() {
       )}
 
       {/* Botón para ir a crear nuevo servicio */}
-      <button onClick={() => navigate("/create-service")}>Create New Service</button>
+      <button onClick={() => navigate("/create-service")} className="new-service">Create New Service</button>
 
         <button onClick={() => navigate("/dashboard")} className="return-button">
     Return
