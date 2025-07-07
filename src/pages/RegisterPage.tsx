@@ -110,7 +110,7 @@ export default function RegisterPage() {
           
         <button
           type="button"
-          onClick={() => navigate("/login")} // Esto redirige a la página de login
+          onClick={() => navigate("/login")} // login page
           className="initial-button"
         >
           Back to Home

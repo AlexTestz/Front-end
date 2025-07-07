@@ -1,17 +1,17 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
-import "../components/EditServicePage.css"; // Asegúrate de tener un archivo CSS para los estilos
+import "../components/EditServicePage.css"; 
 
 export default function EditServicePage() {
-  const { id } = useParams(); // Obtener el ID del servicio desde la URL
+  const { id } = useParams(); 
   const navigate = useNavigate();
 
   const [service, setService] = useState({
     name: "",
     description: "",
-    price: "",
-    duration: "", // Asegúrate de incluir el campo de duración
+    price: 0, // Inicializa como número
+    duration: 0, // Inicializa como número
   });
 
   const [errorMsg, setErrorMsg] = useState("");
@@ -21,8 +21,7 @@ export default function EditServicePage() {
   useEffect(() => {
     const fetchService = async () => {
       try {
-        const res = await axios.get(`http://3.211.68.117:8000/api/services/name/${id}`);
-
+        const res = await axios.get(`http://3.211.68.117:8000/api/services/${id}`);
         setService(res.data); // Asegúrate de que la respuesta contiene los datos correctamente
       } catch (err) {
         setErrorMsg("❌ Error loading service data.");
@@ -35,7 +34,13 @@ export default function EditServicePage() {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setService((prev) => ({ ...prev, [name]: value }));
+
+    // Convierte price y duration a números
+    if (name === "price" || name === "duration") {
+      setService((prev) => ({ ...prev, [name]: Number(value) }));
+    } else {
+      setService((prev) => ({ ...prev, [name]: value }));
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -43,25 +48,24 @@ export default function EditServicePage() {
     setErrorMsg("");
     setSuccessMsg("");
 
-    // Validaciones para asegurar que los campos estén completos
-    if (!service.name || !service.description || service.price <= 0) {
+    // Validaciones para asegurar que los campos estén completos y los valores sean válidos
+    if (!service.name || !service.description || service.price <= 0 || service.duration <= 0) {
       setErrorMsg("❌ Please fill in all fields correctly.");
       return;
     }
 
     try {
       // Hacer una solicitud PUT para actualizar el servicio
-const res = await axios.put(
- `http://3.211.68.117:8000/api/services/${id}`,
-  {
-    name: service.name,
-    description: service.description,
-    price: service.price,
-    duration: service.duration, // Asegúrate de incluir la duración si es necesaria
-  }
-);
+      const res = await axios.put(
+        `http://3.211.68.117:8000/api/services/${id}`,
+        {
+          name: service.name,
+          description: service.description,
+          price: service.price,
+          duration: service.duration, // Duración incluida en la solicitud
+        }
+      );
 
-      // Si la actualización es exitosa
       if (res.status === 200) {
         setSuccessMsg("✅ Service updated successfully.");
         setTimeout(() => navigate("/services"), 2000); // Redirigir a la lista de servicios
@@ -71,71 +75,72 @@ const res = await axios.put(
       setErrorMsg("❌ Error updating service.");
     }
   };
+
   return (
-<div className="edit-service-container">
-  <h1>Edit Service</h1>
+    <div className="edit-service-container">
+      <h1>Edit Service</h1>
 
-  {errorMsg && <p className="error-message">{errorMsg}</p>}
-  {successMsg && <p className="success-message">{successMsg}</p>}
+      {errorMsg && <p className="error-message">{errorMsg}</p>}
+      {successMsg && <p className="success-message">{successMsg}</p>}
 
-  <form onSubmit={handleSubmit} className="edit-service-form">
-    <div className="form-group">
-      <label>Service Name</label>
-      <input
-        type="text"
-        name="name"
-        value={service.name}
-        onChange={handleChange}
-        required
-      />
+      <form onSubmit={handleSubmit} className="edit-service-form">
+        <div className="form-group">
+          <label>Service Name</label>
+          <input
+            type="text"
+            name="name"
+            value={service.name}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <div className="form-group">
+          <label>Description</label>
+          <textarea
+            name="description"
+            value={service.description}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <div className="form-group">
+          <label>Price (USD)</label>
+          <input
+            type="number"
+            name="price"
+            value={service.price}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        {/* Campo de Duración */}
+        <div className="form-group">
+          <label>Duration (minutes)</label>
+          <input
+            type="number"
+            name="duration"
+            value={service.duration}
+            onChange={handleChange}
+            required
+            min="1"  
+          />
+        </div>
+
+        <button type="submit" className="edit-service-button">
+          Save Changes
+        </button>
+
+        <button
+          type="button"
+          onClick={() => navigate("/services")}
+          className="return-button"
+        >
+          Return to Services List
+        </button>
+      </form>
     </div>
-
-    <div className="form-group">
-      <label>Description</label>
-      <textarea
-        name="description"
-        value={service.description}
-        onChange={handleChange}
-        required
-      />
-    </div>
-
-    <div className="form-group">
-      <label>Price (USD)</label>
-      <input
-        type="number"
-        name="price"
-        value={service.price}
-        onChange={handleChange}
-        required
-      />
-    </div>
-
-    {/* Campo de Duración */}
-    <div className="form-group">
-      <label>Duration (minutes)</label>
-      <input
-        type="number"
-        name="duration"
-        value={service.duration}
-        onChange={handleChange}
-        required
-        min="1"  // Asegura que la duración sea al menos 1 minuto
-      />
-    </div>
-
-    <button type="submit" className="edit-service-button">
-      Save Changes
-    </button>
-
-    <button
-      type="button"
-      onClick={() => navigate("/services")}
-      className="return-button"
-    >
-      Return to Services List
-    </button>
-  </form>
-</div>
   );
 }
