@@ -1,0 +1,152 @@
+/* main container */
+.client-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: transparent;
+  padding: 20px;
+}
+
+/* Forms */
+.client-form {
+  background-color: transparent;
+  padding: 5rem;
+  border-radius: 50px;
+  box-shadow: 0 4px 80px rgba(0, 0, 0);
+  width: 100%;
+  max-width: 500px;
+}
+
+/* Form title */
+.client-form h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: #000000;
+  text-align: center;
+}
+
+/* (label + input) */
+.form-group {
+  margin-bottom: 1rem;
+}
+
+/* Tags */
+.form-group label {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #000000;
+  margin-bottom: 6px;
+}
+
+/* Input fields */
+.form-group input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #000000;
+  border-radius: 18px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background-color: transparent;
+}
+
+.form-group input:focus {
+  border-color: #805a0a;
+  outline: none;
+  border-radius: 8px;
+}
+
+/* Buttom */
+.client-form button {
+  background-color: #9b7610b7;
+  color: rgb(0, 0, 0);
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s ease;
+}
+
+.client-form button:hover {
+  background-color: #d8ae25;
+  transform: translateY(-4px);
+}
+
+.regresar {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* Success and error messages */
+.success-message {
+  color: #38a169;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.error-message {
+  color: #e53e3e;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+/* Media Queries to make it responsive */
+
+/* For small screens (tablets and mobile phones) */
+@media (max-width: 768px) {
+  .client-form {
+    padding: 3rem;
+    max-width: 90%; /* Reduce width on small screens */
+  }
+
+  .client-form h2 {
+    font-size: 1.75rem; /* Reduce font size */
+  }
+
+  .form-group input {
+    font-size: 0.95rem; /* Reduce the font size of the input */
+    padding: 8px 12px; /* Adjust the padding for smaller screens */
+  }
+
+  .client-form button {
+    padding: 10px;
+    font-size: 1rem;
+  }
+
+  .success-message, .error-message {
+    font-size: 0.85rem; /* Adjust font size for messages */
+  }
+}
+/* For even smaller screens (mobile devices) */
+@media (max-width: 480px) {
+  .client-form {
+    padding: 2rem;
+    max-width: 95%; /* Ensure that the form occupies most of the screen */
+  }
+
+  .client-form h2 {
+    font-size: 1.5rem; /* Further reduce the size of the title */
+  }
+
+  .form-group input {
+    font-size: 0.9rem; /* Further reduce the font size of the input */
+    padding: 8px; /* Adjust the padding for very small screens */
+  }
+
+  .client-form button {
+    padding: 10px;
+    font-size: 0.95rem;
+  }
+
+  .success-message, .error-message {
+    font-size: 0.8rem; /* Final adjustment of font size */
+  }
+}

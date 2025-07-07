@@ -1,0 +1,116 @@
+/* Main container */
+.create-service-container {
+  padding: 40px 20px;
+  min-height: 100vh;
+  background-color: transparent;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #1a202c;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Title */
+.create-service-container h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: #2d3748;
+  text-align: center;
+}
+
+/* Message */
+.error-message {
+  color: #e53e3e;
+  margin-bottom: 16px;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+.success-message {
+  color: #2f855a;
+  margin-bottom: 16px;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+/* forms */
+.create-service-form {
+  background-color: white;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #2d3748;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 10px 14px;
+  border: 1px solid #cbd5e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  resize: vertical;
+}
+
+/* buttons */
+.create-service-button,
+.return-button {
+  background-color: #9b7610b7;
+  color: black;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.create-service-button:hover,
+.return-button:hover {
+  background-color: #d8ae25;
+}
+
+.return-button {
+  background-color: #edf2f7;
+  margin-top: 10px;
+  color: #2d3748;
+}
+
+.return-button:hover {
+  background-color: #e2e8f0;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .create-service-container h1 {
+    font-size: 2rem;
+  }
+
+  .create-service-form {
+    padding: 24px;
+  }
+
+  .create-service-button,
+  .return-button {
+    font-size: 0.95rem;
+    padding: 10px 14px;
+  }
+}
