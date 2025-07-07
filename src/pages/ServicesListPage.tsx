@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import "../components/ServicesList.css"; // Asegúrate de tener los estilos necesarios
+import "../components/ServicesList.css"; 
 
 export default function ServicesListPage() {
   const [services, setServices] = useState([]);

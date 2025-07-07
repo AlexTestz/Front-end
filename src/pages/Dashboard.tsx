@@ -66,6 +66,13 @@ export default function Dashboard() {
           View pets
         </button>
 
+         <button
+          onClick={() => navigate("/services")}
+          className="btn btn-yellow"
+        >
+          Services
+        </button>
+
         <button
           onClick={logout}
           className="btn btn-red"
