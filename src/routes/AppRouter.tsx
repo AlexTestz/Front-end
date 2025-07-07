@@ -34,7 +34,7 @@ export default function AppRouter() {
         <Route path="/change-password" element={<ChangePasswordPage />} />
         <Route path="/services" element={<ServicesListPage />} />
         <Route path="/create-service" element={<CreateServicePage />} />
-        <Route path="/edit-service/:id" element={<EditServicePage />} />
+        <Route path="/edit-service/:name" element={<EditServicePage />} />
 
 
         {/* Ruta protegida para el dashboard */}
