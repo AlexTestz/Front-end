@@ -1,4 +1,4 @@
-/* Contenedor principal */
+/* main container */
 .services-list-container {
   padding: 40px 20px;
   min-height: 100vh;
@@ -10,7 +10,7 @@
   align-items: center;
 }
 
-/* Título */
+/* title */
 .services-list-container h1 {
   font-size: 2.5rem;
   font-weight: bold;
@@ -19,7 +19,7 @@
   text-align: center;
 }
 
-/* Mensaje de error */
+/* error message */
 .services-list-container p {
   color: #e53e3e;
   font-size: 0.95rem;
@@ -27,7 +27,7 @@
   text-align: center;
 }
 
-/* Lista de servicios */
+/* list services */
 .services-list-container ul {
   list-style: none;
   padding: 0;
@@ -35,7 +35,7 @@
   max-width: 700px;
 }
 
-/* Cada servicio */
+/* services */
 .services-list-container li {
   background-color: white;
   border: 1px solid #e2e8f0;
@@ -48,7 +48,7 @@
   gap: 12px;
 }
 
-/* Botones de acción */
+/* Button action */
 .services-list-container li button {
   margin-right: 8px;
   padding: 8px 14px;
@@ -74,7 +74,7 @@
   color: white;
 }
 
-/* Botón crear servicio */
+/*button service */
 .services-list-container > button:last-child {
   margin-top: 24px;
   background-color: #9b7610b7;
