@@ -72,6 +72,8 @@ export default function ServicesListPage() {
 
       {/* Botón para ir a crear nuevo servicio */}
       <button onClick={() => navigate("/create-service")}>Create New Service</button>
+      <button onClick={() => navigate("/services")}>Return</button>
     </div>
+    
   );
 }
