@@ -20,7 +20,7 @@ export default function EditServicePage() {
   useEffect(() => {
     const fetchService = async () => {
       try {
-        const res = await axios.get(`http://3.211.68.117:8000/api/services/name/${name}`);
+        const res = await axios.get(`http://3.211.68.117:8000/api/services/name/${id}`);
 
         setService(res.data); // Asegúrate de que la respuesta contiene los datos correctamente
       } catch (err) {
@@ -51,7 +51,7 @@ export default function EditServicePage() {
     try {
       // Hacer una solicitud PUT para actualizar el servicio
 const res = await axios.put(
-  `http://3.211.68.117:8000/api/services/name/${encodeURIComponent(service.name)}`, 
+ `http://3.211.68.117:8000/api/services/${id}`,
   {
     name: service.name,
     description: service.description,
