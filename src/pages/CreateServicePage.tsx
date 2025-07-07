@@ -1,13 +1,13 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import "../components/CreateServicePage.css"; // Asegúrate de tener un archivo CSS para los estilos
+import "../components/CreateServicePage.css"; 
 
 export default function CreateServicePage() {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState(0);
-  const [duration, setDuration] = useState(0); // Si necesitas duración, puedes agregarlo aquí
+  const [duration, setDuration] = useState(0); 
   const [errorMsg, setErrorMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
   const navigate = useNavigate();
@@ -34,7 +34,7 @@ export default function CreateServicePage() {
       if (res.status === 201) {
         setSuccessMsg("✅ Service created successfully.");
         setTimeout(() => {
-          navigate("/services"); // Redirigir a la lista de servicios después de la creación
+          navigate("/services"); //
         }, 2000);
       }
     } catch (err) {
@@ -79,7 +79,7 @@ export default function CreateServicePage() {
             required
           />
         </div>
-            {/* Nuevo campo para la duración */}
+            {/*  */}
         <div className="form-group">
           <label>Duration (minutes)</label>
           <input
@@ -87,7 +87,7 @@ export default function CreateServicePage() {
             value={duration}
             onChange={(e) => setDuration(Number(e.target.value))}
             required
-            min="1" // Asegura que la duración sea al menos 1 minuto
+            min="1" // Ensure duration is a positive number
           />
         </div>
 

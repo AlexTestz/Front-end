@@ -10,19 +10,19 @@ export default function EditServicePage() {
   const [service, setService] = useState({
     name: "",
     description: "",
-    price: 0, // Inicializa como número
-    duration: 0, // Inicializa como número
+    price: 0, 
+    duration: 1, 
   });
 
   const [errorMsg, setErrorMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
 
-  // Obtener los detalles del servicio a editar
+  // Get the details of the service to be edited
   useEffect(() => {
     const fetchService = async () => {
       try {
         const res = await axios.get(`http://3.211.68.117:8000/api/services/${id}`);
-        setService(res.data); // Asegúrate de que la respuesta contiene los datos correctamente
+        setService(res.data); // Make sure that the response contains the data correctly.
       } catch (err) {
         setErrorMsg("❌ Error loading service data.");
         console.error(err);
@@ -35,7 +35,7 @@ export default function EditServicePage() {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
 
-    // Convierte price y duration a números
+    // Convert price and duration to numbers
     if (name === "price" || name === "duration") {
       setService((prev) => ({ ...prev, [name]: Number(value) }));
     } else {
@@ -48,27 +48,27 @@ export default function EditServicePage() {
     setErrorMsg("");
     setSuccessMsg("");
 
-    // Validaciones para asegurar que los campos estén completos y los valores sean válidos
+    // Validations to ensure that fields are complete and values are valid
     if (!service.name || !service.description || service.price <= 0 || service.duration <= 0) {
       setErrorMsg("❌ Please fill in all fields correctly.");
       return;
     }
 
     try {
-      // Hacer una solicitud PUT para actualizar el servicio
+      // Make a PUT request to update the service
       const res = await axios.put(
         `http://3.211.68.117:8000/api/services/${id}`,
         {
           name: service.name,
           description: service.description,
           price: service.price,
-          duration: service.duration, // Duración incluida en la solicitud
+          duration: service.duration, // Duration included in the application
         }
       );
 
       if (res.status === 200) {
         setSuccessMsg("✅ Service updated successfully.");
-        setTimeout(() => navigate("/services"), 2000); // Redirigir a la lista de servicios
+        setTimeout(() => navigate("/services"), 2000); // Redirect to the list of services
       }
     } catch (err) {
       console.error("❌ Error updating service:", err);
