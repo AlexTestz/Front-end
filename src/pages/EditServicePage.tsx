@@ -11,6 +11,7 @@ export default function EditServicePage() {
     name: "",
     description: "",
     price: 0,
+    duration: 0, // Asegúrate de incluir el campo de duración
   });
 
   const [errorMsg, setErrorMsg] = useState("");
@@ -70,57 +71,70 @@ const res = await axios.put(
     }
   };
   return (
-    <div className="edit-service-container">
-      <h1>Edit Service</h1>
+<div className="edit-service-container">
+  <h1>Edit Service</h1>
 
-      {errorMsg && <p className="error-message">{errorMsg}</p>}
-      {successMsg && <p className="success-message">{successMsg}</p>}
+  {errorMsg && <p className="error-message">{errorMsg}</p>}
+  {successMsg && <p className="success-message">{successMsg}</p>}
 
-      <form onSubmit={handleSubmit} className="edit-service-form">
-        <div className="form-group">
-          <label>Service Name</label>
-          <input
-            type="text"
-            name="name"
-            value={service.name}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        <div className="form-group">
-          <label>Description</label>
-          <textarea
-            name="description"
-            value={service.description}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        <div className="form-group">
-          <label>Price (USD)</label>
-          <input
-            type="number"
-            name="price"
-            value={service.price}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        <button type="submit" className="edit-service-button">
-          Save Changes
-        </button>
-
-        <button
-          type="button"
-          onClick={() => navigate("/services")}
-          className="return-button"
-        >
-          Return to Services List
-        </button>
-      </form>
+  <form onSubmit={handleSubmit} className="edit-service-form">
+    <div className="form-group">
+      <label>Service Name</label>
+      <input
+        type="text"
+        name="name"
+        value={service.name}
+        onChange={handleChange}
+        required
+      />
     </div>
+
+    <div className="form-group">
+      <label>Description</label>
+      <textarea
+        name="description"
+        value={service.description}
+        onChange={handleChange}
+        required
+      />
+    </div>
+
+    <div className="form-group">
+      <label>Price (USD)</label>
+      <input
+        type="number"
+        name="price"
+        value={service.price}
+        onChange={handleChange}
+        required
+      />
+    </div>
+
+    {/* Campo de Duración */}
+    <div className="form-group">
+      <label>Duration (minutes)</label>
+      <input
+        type="number"
+        name="duration"
+        value={service.duration}
+        onChange={handleChange}
+        required
+        min="1"  // Asegura que la duración sea al menos 1 minuto
+      />
+    </div>
+
+    <button type="submit" className="edit-service-button">
+      Save Changes
+    </button>
+
+    <button
+      type="button"
+      onClick={() => navigate("/services")}
+      className="return-button"
+    >
+      Return to Services List
+    </button>
+  </form>
+</div>
   );
 }
