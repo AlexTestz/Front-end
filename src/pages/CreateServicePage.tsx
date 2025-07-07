@@ -26,7 +26,7 @@ export default function CreateServicePage() {
       name,
       description,
       price,
-      duration
+      duration,
     };
 
     try {

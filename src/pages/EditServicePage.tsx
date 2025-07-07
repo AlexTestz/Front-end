@@ -11,7 +11,7 @@ export default function EditServicePage() {
     name: "",
     description: "",
     price: 0,
-    duration: 0 // Asegúrate de incluir el campo de duración
+    duration: 0, // Asegúrate de incluir el campo de duración
   });
 
   const [errorMsg, setErrorMsg] = useState("");
