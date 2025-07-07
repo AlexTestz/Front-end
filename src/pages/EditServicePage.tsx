@@ -10,8 +10,8 @@ export default function EditServicePage() {
   const [service, setService] = useState({
     name: "",
     description: "",
-    price: 0,
-    duration: 0, // Asegúrate de incluir el campo de duración
+    price: "",
+    duration: "", // Asegúrate de incluir el campo de duración
   });
 
   const [errorMsg, setErrorMsg] = useState("");
