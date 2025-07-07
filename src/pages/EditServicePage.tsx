@@ -57,6 +57,7 @@ const res = await axios.put(
     name: service.name,
     description: service.description,
     price: service.price,
+    duration: service.duration, // Asegúrate de incluir la duración si es necesaria
   }
 );
 
