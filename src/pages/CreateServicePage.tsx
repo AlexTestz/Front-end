@@ -7,6 +7,7 @@ export default function CreateServicePage() {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState(0);
+  const [duration, setDuration] = useState(0); // Si necesitas duración, puedes agregarlo aquí
   const [errorMsg, setErrorMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
   const navigate = useNavigate();
@@ -25,6 +26,7 @@ export default function CreateServicePage() {
       name,
       description,
       price,
+      duration
     };
 
     try {
@@ -75,6 +77,17 @@ export default function CreateServicePage() {
             value={price}
             onChange={(e) => setPrice(Number(e.target.value))}
             required
+          />
+        </div>
+            {/* Nuevo campo para la duración */}
+        <div className="form-group">
+          <label>Duration (minutes)</label>
+          <input
+            type="number"
+            value={duration}
+            onChange={(e) => setDuration(Number(e.target.value))}
+            required
+            min="1" // Asegura que la duración sea al menos 1 minuto
           />
         </div>
 
