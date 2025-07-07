@@ -11,7 +11,7 @@ export default function EditServicePage() {
     name: "",
     description: "",
     price: 0, 
-    duration: 1, 
+    duration: 0, 
   });
 
   const [errorMsg, setErrorMsg] = useState("");
